@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Accueil{% endblock %}
+{% block content %}
+<div class="p-4 border rounded">
+  <h1>Bienvenue</h1>
+  <p>Projet Django avec django-allauth prêt à l'emploi.</p>
+  {% if user.is_authenticated %}
+    <p>Connecté en tant que <strong>{{ user.get_full_name|default:user.username }}</strong></p>
+  {% else %}
+    <p><a href="{% url 'account_login' %}">Se connecter</a> ou <a href="{% url 'account_signup' %}">s'inscrire</a></p>
+  {% endif %}
+</div>
+{% endblock %}
