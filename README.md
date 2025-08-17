@@ -32,5 +32,5 @@ This project is a minimal Django setup with **django-allauth** pre-configured fo
 
 ## Notes
 
-- `mysite/settings.py` uses a placeholder SECRET_KEY for development. Set `DJANGO_SECRET_KEY` env var in production.
-- Customize `ACCOUNT_*` settings in `mysite/settings.py` as needed.
+- `config/settings.py` uses a placeholder SECRET_KEY for development. Set `DJANGO_SECRET_KEY` env var in production.
+- Customize `ACCOUNT_*` settings in `config/settings.py` as needed.
