@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load i18n socialaccount %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="auth-card card mb-4">
+            <div class="card-header auth-header bg-primary text-white">
+                <h2 class="h4 mb-0 text-center">Connexion</h2>
+            </div>
+            <div class="card-body p-4">
+                <form method="post" action="{% url 'account_login' %}">
+                    {% csrf_token %}
+                    
+                    {% if form.errors %}
+                    <div class="alert alert-danger">
+                        {% trans "Identifiants incorrects. Veuillez réessayer." %}
+                    </div>
+                    {% endif %}
+                    
+                    <div class="mb-3">
+                        <label for="id_login" class="form-label">{% trans "Adresse email" %}</label>
+                        <input type="email" name="login" class="form-control" required id="id_login">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="id_password" class="form-label">{% trans "Mot de passe" %}</label>
+                        <input type="password" name="password" class="form-control" required id="id_password">
+                    </div>
+                    
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" name="remember" class="form-check-input" id="id_remember">
+                        <label class="form-check-label" for="id_remember">{% trans "Se souvenir de moi" %}</label>
+                    </div>
+                    
+                    <div class="d-grid mb-3">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-sign-in-alt me-2"></i>{% trans "Connexion" %}
+                        </button>
+                    </div>
+                    
+                    <div class="text-center mb-3">
+                        <a href="{% url 'account_reset_password' %}" class="text-decoration-none">
+                            {% trans "Mot de passe oublié ?" %}
+                        </a>
+                    </div>
+                    
+                    <hr>
+                    
+                    <div class="d-grid">
+                        <a href="{% provider_login_url 'google' %}" class="btn btn-outline-danger">
+                            <i class="fab fa-google me-2"></i>{% trans "Se connecter avec Google" %}
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
